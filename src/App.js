@@ -29,10 +29,8 @@ function App() {
     const response = await api.delete('repositories/'+id);
     
     if(response.status === 204) {
-      const repositoryIndex = repositories.findIndex(repository => repository.id === id);
 
-      setRepositories([...repositories.slice(0, repositoryIndex),
-                      ...repositories.slice(repositoryIndex + 1, repositories.length)]);
+      setRepositories(repositories.filter(repository => repository.id !== id));
     }      
   }
 
